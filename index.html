@@ -23,7 +23,8 @@
     <div class="logo">SUPERBRAIN</div>
     <ul class="nav-links">
       <li><a href="#features">Features</a></li>
-      <li><a href="#docs">Docs</a></li>
+      <li><a href="#docs">Install</a></li>
+      <li><a href="#reference">Reference</a></li>
       <li><a href="#roadmap">Roadmap</a></li>
       <li><a href="#demos">Demos</a></li>
     </ul>
@@ -94,6 +95,252 @@
         </div>
         <p style="color: var(--text-secondary);">Repository: <a href="https://github.com/golightstep/superbrainSdk"
             style="color: var(--accent-color);">superbrainSdk</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="reference">
+    <h2>SDK Reference</h2>
+    <div class="ref-tab-nav"
+      style="display: flex; gap: 1rem; justify-content: center; margin-bottom: 2rem; flex-wrap: wrap;">
+      <button class="ref-tab-btn active" data-ref="py"
+        style="background: none; border: none; color: var(--text-secondary); font-size: 1rem; font-weight: 700; cursor: pointer; padding: 0.6rem 1.4rem; border-bottom: 2.5px solid transparent; transition: all 0.3s; font-family: var(--font-main);">🐍
+        Python</button>
+      <button class="ref-tab-btn" data-ref="node"
+        style="background: none; border: none; color: var(--text-secondary); font-size: 1rem; font-weight: 700; cursor: pointer; padding: 0.6rem 1.4rem; border-bottom: 2.5px solid transparent; transition: all 0.3s; font-family: var(--font-main);">🟢
+        Node.js</button>
+      <button class="ref-tab-btn" data-ref="go"
+        style="background: none; border: none; color: var(--text-secondary); font-size: 1rem; font-weight: 700; cursor: pointer; padding: 0.6rem 1.4rem; border-bottom: 2.5px solid transparent; transition: all 0.3s; font-family: var(--font-main);">🔵
+        Go</button>
+    </div>
+
+    <!-- Python Tab -->
+    <div id="ref-py" class="ref-pane">
+      <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Quickstart</h3>
+      <div class="code-block" style="margin-bottom: 2rem;">
+        <code>from superbrain import DistributedContextFabric
+fabric = DistributedContextFabric()               # Connect to fabric
+ctx = fabric.attach_context("my-context")         # Attach/create a context
+ctx.write("key1", "Hello from Python!")           # Write data
+value = ctx.read("key1")                          # Read data
+keys = ctx.list_keys()                            # List all keys
+print(value)</code>
+      </div>
+
+      <h3 style="color: var(--accent-color); margin-bottom: 1rem;">API Reference</h3>
+      <table class="roadmap-table" style="margin-bottom: 2rem;">
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code style="color:#3b82f6">DistributedContextFabric(coordinator="localhost:60050")</code></td>
+            <td>Connect to the SuperBrain cluster</td>
+          </tr>
+          <tr>
+            <td><code style="color:#3b82f6">fabric.attach_context(context_id: str)</code></td>
+            <td>Attach to (or create) a named shared context</td>
+          </tr>
+          <tr>
+            <td><code style="color:#3b82f6">ctx.write(key: str, value: str)</code></td>
+            <td>Write a value to the distributed fabric</td>
+          </tr>
+          <tr>
+            <td><code style="color:#3b82f6">ctx.read(key: str) → str</code></td>
+            <td>Read a value by key</td>
+          </tr>
+          <tr>
+            <td><code style="color:#3b82f6">ctx.list_keys() → list[str]</code></td>
+            <td>List all keys in this context</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Code Example — CrewAI Shared Memory</h3>
+      <div class="code-block">
+        <code>from superbrain import DistributedContextFabric
+import json, time
+
+class SuperBrainMemory:
+    def __init__(self, context_id="collective_intelligence"):
+        self.fabric = DistributedContextFabric()
+        self.ctx = self.fabric.attach_context(context_id)
+
+    def save(self, content, metadata):
+        key = f"mem_{time.time_ns()}"
+        payload = json.dumps({"body": content, "meta": metadata, "ts": time.time()})
+        self.ctx.write(key, payload)
+
+    def search(self):
+        keys = self.ctx.list_keys()
+        return [json.loads(self.ctx.read(k)) for k in keys if self.ctx.read(k)]
+
+# Agent A writes, Agent B reads — even across different processes
+mem = SuperBrainMemory()
+mem.save("SuperBrain latency is 13.5μs", {"source": "agent_a"})
+history = mem.search()
+for item in history:
+    print(item['body'])</code>
+      </div>
+    </div>
+
+    <!-- Node.js Tab -->
+    <div id="ref-node" class="ref-pane" style="display:none;">
+      <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Quickstart</h3>
+      <div class="code-block" style="margin-bottom: 2rem;">
+        <code>const { Client } = require('superbrain-distributed-sdk');
+const fabric = new Client('localhost:60050');       // Connect to fabric
+
+// Write data
+const data = Buffer.from(JSON.stringify({ msg: "Hello from Node!" }));
+await fabric.write("key1", 0, data);
+
+// Read data
+const raw = await fabric.read("key1", 0, 1024);
+const value = JSON.parse(raw.toString());
+console.log(value.msg);</code>
+      </div>
+
+      <h3 style="color: var(--accent-color); margin-bottom: 1rem;">API Reference</h3>
+      <table class="roadmap-table" style="margin-bottom: 2rem;">
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code style="color:#3b82f6">new Client(address: string)</code></td>
+            <td>Connect to the SuperBrain coordinator</td>
+          </tr>
+          <tr>
+            <td><code style="color:#3b82f6">fabric.write(ptrId, offset, data: Buffer)</code></td>
+            <td>Write a Buffer to the fabric at a pointer</td>
+          </tr>
+          <tr>
+            <td><code style="color:#3b82f6">fabric.read(ptrId, offset, size) → Buffer</code></td>
+            <td>Read bytes from a pointer</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Code Example — Multi-Agent Collective Memory</h3>
+      <div class="code-block">
+        <code>const { Client } = require('superbrain-distributed-sdk');
+
+async function main() {
+    const fabric = new Client('localhost:60050');
+
+    // Agent Alpha: writes a discovery
+    const payload = Buffer.from(JSON.stringify({
+        body: "Fan-out latency verified at 13.5μs",
+        source: "Agent Alpha",
+        timestamp: new Date().toISOString()
+    }));
+    await fabric.write("latest_discovery", 0, payload);
+    console.log("✅ Agent Alpha: Persisted to fabric.");
+
+    // Agent Beta: reads it independently
+    const raw = await fabric.read("latest_discovery", 0, 1024);
+    const memory = JSON.parse(raw.toString());
+    console.log(`📥 Agent Beta Recalled: "${memory.body}"`);
+}
+
+main().catch(console.error);</code>
+      </div>
+    </div>
+
+    <!-- Go Tab -->
+    <div id="ref-go" class="ref-pane" style="display:none;">
+      <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Quickstart</h3>
+      <div class="code-block" style="margin-bottom: 2rem;">
+        <code>import "github.com/golightstep/superbrainSdk/pkg/sdk"
+
+client, _ := sdk.NewClient("localhost:60050")  // Connect
+client.Register("my-go-node")                  // Enroll in fabric (mTLS)
+ptr, _ := client.Allocate(4 * 1024 * 1024)    // Allocate 4MB pointer
+
+// Write
+client.Write(ptr, 0, []byte(`{"key":"value"}`))
+
+// Read
+data, _ := client.Read(ptr, 0, 1024)
+fmt.Println(string(data))</code>
+      </div>
+
+      <h3 style="color: var(--accent-color); margin-bottom: 1rem;">API Reference</h3>
+      <table class="roadmap-table" style="margin-bottom: 2rem;">
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code style="color:#3b82f6">sdk.NewClient(coordinator string)</code></td>
+            <td>Connect to the SuperBrain cluster</td>
+          </tr>
+          <tr>
+            <td><code style="color:#3b82f6">client.Register(nodeID string)</code></td>
+            <td>Enroll node in the fabric (sets up mTLS)</td>
+          </tr>
+          <tr>
+            <td><code style="color:#3b82f6">client.Allocate(size int64) *Pointer</code></td>
+            <td>Allocate shared memory, returns a Pointer</td>
+          </tr>
+          <tr>
+            <td><code style="color:#3b82f6">client.Write(ptr, offset, data []byte)</code></td>
+            <td>Write bytes to the fabric</td>
+          </tr>
+          <tr>
+            <td><code style="color:#3b82f6">client.Read(ptr, offset, size) []byte</code></td>
+            <td>Read bytes from the fabric</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Code Example — High-Frequency Market Feed</h3>
+      <div class="code-block">
+        <code>package main
+
+import (
+    "fmt"
+    "time"
+    "github.com/golightstep/superbrainSdk/pkg/sdk"
+)
+
+func main() {
+    client, _ := sdk.NewClient("localhost:60050")
+    client.Register("go-feed-node")
+
+    // Allocate 4MB shared pointer for market data
+    ptr, _ := client.Allocate(4 * 1024 * 1024)
+    fmt.Printf("🚀 Feed initialized: %s\n", ptr.ID)
+
+    // Writer goroutine (simulates market ticks)
+    go func() {
+        for i := 0; ; i++ {
+            tick := []byte(fmt.Sprintf(`{"symbol":"SBUSD","price":13.5,"ts":%d}`, time.Now().UnixNano()))
+            client.Write(ptr, 0, tick)
+            if i%100 == 0 { fmt.Printf("📈 Published %d ticks\n", i) }
+            time.Sleep(100 * time.Millisecond)
+        }
+    }()
+
+    // Reader: a different strategy consuming the same shared memory
+    for {
+        data, err := client.Read(ptr, 0, 1024)
+        if err == nil && len(data) > 0 {
+            fmt.Printf("📥 Latest tick: %s\n", string(data))
+        }
+        time.Sleep(500 * time.Millisecond)
+    }
+}</code>
       </div>
     </div>
   </section>

@@ -18,6 +18,31 @@ const analytics = getAnalytics(app);
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  // SDK Reference Tabs
+  const refTabBtns = document.querySelectorAll('.ref-tab-btn');
+  const refPanes = document.querySelectorAll('.ref-pane');
+
+  refTabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.ref;
+      refTabBtns.forEach(b => {
+        b.style.color = 'var(--text-secondary)';
+        b.style.borderBottomColor = 'transparent';
+      });
+      btn.style.color = 'var(--accent-color)';
+      btn.style.borderBottomColor = 'var(--accent-color)';
+      refPanes.forEach(p => p.style.display = p.id === `ref-${target}` ? 'block' : 'none');
+      logEvent(analytics, 'sdk_tab_click', { language: target });
+    });
+  });
+
+  // Set initial active tab style
+  const firstBtn = document.querySelector('.ref-tab-btn.active');
+  if (firstBtn) {
+    firstBtn.style.color = 'var(--accent-color)';
+    firstBtn.style.borderBottomColor = 'var(--accent-color)';
+  }
+
   // Track Waitlist Clicks
   const waitlistBtns = document.querySelectorAll('a[href="https://binary.so/bC7zobC"]');
   waitlistBtns.forEach(btn => {
