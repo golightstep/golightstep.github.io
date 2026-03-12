@@ -1,3 +1,20 @@
+import { initializeApp } from "firebase/app";
+import { getAnalytics, logEvent } from "firebase/analytics";
+
+// Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyBsQCGIS4Uc0IKHSuzvtwcEwdA9Ci56A8U",
+  authDomain: "superbrainwebsite-4161f.firebaseapp.com",
+  projectId: "superbrainwebsite-4161f",
+  storageBucket: "superbrainwebsite-4161f.firebasestorage.app",
+  messagingSenderId: "1048392558114",
+  appId: "1:1048392558114:web:f987d3658b85cac5c3cc7b"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
 document.addEventListener('DOMContentLoaded', () => {
   const tabButtons = document.querySelectorAll('.tab-btn');
   const tabPanes = document.querySelectorAll('.tab-pane');
@@ -18,6 +35,37 @@ document.addEventListener('DOMContentLoaded', () => {
           pane.style.display = 'none';
         }
       });
+
+      // Log tab click event
+      logEvent(analytics, 'install_tab_click', {
+        tab_name: target
+      });
+    });
+  });
+
+  // Track Waitlist Clicks
+  const waitlistBtns = document.querySelectorAll('a[href="https://binary.so/bC7zobC"]');
+  waitlistBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      logEvent(analytics, 'waitlist_click', {
+        location: btn.classList.contains('primary-btn') ? 'footer' : 'navbar'
+      });
+    });
+  });
+
+  // Track GitHub SDK Clicks
+  const githubBtns = document.querySelectorAll('a[href="https://github.com/golightstep/superbrainSdk"]');
+  githubBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      logEvent(analytics, 'github_sdk_click');
+    });
+  });
+
+  // Track CrewAI Demo Repo Clicks
+  const demoRepoBtns = document.querySelectorAll('a[href="https://github.com/golightstep/superbrainSdk/blob/main/python/examples/crewai_shared_memory/README.md"]');
+  demoRepoBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      logEvent(analytics, 'crewai_demo_repo_click');
     });
   });
 
