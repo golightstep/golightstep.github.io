@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Superbrain | Distributed Memory Fabric for AI Agents</title>
-  <meta name="description" content="SuperBrain SDK: The high-performance distributed memory fabric for AI agents. Scale your agentic memory across nodes seamlessly.">
+  <meta name="description"
+    content="SuperBrain SDK: The high-performance distributed memory fabric for AI agents. Scale your agentic memory across nodes seamlessly.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Fira+Code&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Fira+Code&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
   <div class="bg-overlay"></div>
   <div class="bg-gradient"></div>
@@ -28,7 +32,8 @@
 
   <section class="hero">
     <h1>The Distributed Memory<span> Fabric for AI Agents</span></h1>
-    <p>High-performance RAM sharing system written in Go. A distributed memory pool that scales with your AI needs — allocate, read, and write across nodes transparently.</p>
+    <p>High-performance RAM sharing system written in Go. A distributed memory pool that scales with your AI needs —
+      allocate, read, and write across nodes transparently.</p>
     <div class="hero-cta">
       <a href="#docs" class="primary-btn">Get Started</a>
       <a href="https://github.com/golightstep/superbrainSdk" class="secondary-btn">View on GitHub</a>
@@ -40,11 +45,13 @@
     <div class="grid">
       <div class="card">
         <h3>Distributed RAM</h3>
-        <p>A distributed RAM sharing system written in Go with gRPC + Protocol Buffers. Multiple devices donate local RAM to a shared cluster.</p>
+        <p>A distributed RAM sharing system written in Go with gRPC + Protocol Buffers. Multiple devices donate local
+          RAM to a shared cluster.</p>
       </div>
       <div class="card">
         <h3>Client Transparency</h3>
-        <p>Allocate, read, and write across nodes transparently — as if it were local memory. No infrastructure headaches.</p>
+        <p>Allocate, read, and write across nodes transparently — as if it were local memory. No infrastructure
+          headaches.</p>
       </div>
       <div class="card">
         <h3>Semantic Memory</h3>
@@ -52,7 +59,8 @@
       </div>
       <div class="card">
         <h3>High Availability</h3>
-        <p>Raft consensus replication and gossip-based membership ensure your memory pool is always online and resilient.</p>
+        <p>Raft consensus replication and gossip-based membership ensure your memory pool is always online and
+          resilient.</p>
       </div>
     </div>
   </section>
@@ -70,19 +78,24 @@
           <div class="code-block">
             <code>pip install superbrain-sdk</code>
           </div>
-          <p style="margin-top: 1rem; color: var(--text-secondary);">Registry: <a href="https://pypi.org/project/superbrain-sdk/" style="color: var(--accent-color);">superbrain-sdk</a></p>
+          <p style="margin-top: 1rem; color: var(--text-secondary);">Registry: <a
+              href="https://pypi.org/project/superbrain-sdk/" style="color: var(--accent-color);">superbrain-sdk</a></p>
         </div>
         <div id="node" class="tab-pane" style="display: none;">
           <div class="code-block">
             <code>npm install superbrain-distributed-sdk</code>
           </div>
-          <p style="margin-top: 1rem; color: var(--text-secondary);">Registry: <a href="https://www.npmjs.com/package/superbrain-distributed-sdk" style="color: var(--accent-color);">superbrain-distributed-sdk</a></p>
+          <p style="margin-top: 1rem; color: var(--text-secondary);">Registry: <a
+              href="https://www.npmjs.com/package/superbrain-distributed-sdk"
+              style="color: var(--accent-color);">superbrain-distributed-sdk</a></p>
         </div>
         <div id="go" class="tab-pane" style="display: none;">
           <div class="code-block">
             <code>go get github.com/golightstep/superbrainSdk</code>
           </div>
-          <p style="margin-top: 1rem; color: var(--text-secondary);">Repository: <a href="https://github.com/golightstep/superbrainSdk" style="color: var(--accent-color);">superbrainSdk</a></p>
+          <p style="margin-top: 1rem; color: var(--text-secondary);">Repository: <a
+              href="https://github.com/golightstep/superbrainSdk" style="color: var(--accent-color);">superbrainSdk</a>
+          </p>
         </div>
       </div>
     </div>
@@ -92,17 +105,23 @@
     <h2>See it in Action</h2>
     <div class="grid">
       <div class="card">
-        <div style="aspect-ratio: 16/9; background: #111; border-radius: 10px; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center;">
-          <a href="https://www.youtube.com/watch?v=hTIsqH3CTfg" style="color: var(--accent-color); text-decoration: none; font-weight: 600;">Watch Crew AI Demo</a>
-        </div>
-        <h3>Superbrain + Crew AI</h3>
+        <a href="https://www.youtube.com/watch?v=hTIsqH3CTfg" target="_blank" class="demo-link">
+          <div class="thumbnail-wrapper">
+            <img src="/crewai-thumbnail.png" alt="Superbrain + Crew AI Demo" class="demo-thumbnail">
+            <div class="play-overlay">▶</div>
+          </div>
+        </a>
+        <h3 style="margin-top: 1.5rem;">Superbrain + Crew AI</h3>
         <p>Agents sharing memory through the distributed fabric for better collaboration.</p>
       </div>
       <div class="card">
-        <div style="aspect-ratio: 16/9; background: #111; border-radius: 10px; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center;">
-          <a href="https://www.youtube.com/watch?v=TzNxpk5PSXM" style="color: var(--accent-color); text-decoration: none; font-weight: 600;">Watch Redis Demo</a>
-        </div>
-        <h3>Superbrain + Redis</h3>
+        <a href="https://www.youtube.com/watch?v=TzNxpk5PSXM" target="_blank" class="demo-link">
+          <div class="thumbnail-wrapper">
+            <img src="/redis-thumbnail.png" alt="Superbrain + Redis Demo" class="demo-thumbnail">
+            <div class="play-overlay">▶</div>
+          </div>
+        </a>
+        <h3 style="margin-top: 1.5rem;">Superbrain + Redis</h3>
         <p>High-speed memory symbiosis for low-latency state management.</p>
       </div>
     </div>
@@ -148,9 +167,12 @@
     </table>
   </section>
 
-  <footer style="padding: 100px 5%; text-align: center; background: var(--glass-bg); border-top: 1px solid var(--glass-border);">
+  <footer
+    style="padding: 100px 5%; text-align: center; background: var(--glass-bg); border-top: 1px solid var(--glass-border);">
     <h2 style="margin-bottom: 1rem;">Ready for Superhuman Scale?</h2>
-    <p style="color: var(--text-secondary); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">🔥 Join the Enterprise Waitlist for managed fleets, GPUDirect RDMA access, and dedicated support.</p>
+    <p
+      style="color: var(--text-secondary); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+      🔥 Join the Enterprise Waitlist for managed fleets, GPUDirect RDMA access, and dedicated support.</p>
     <a href="https://binary.so/bC7zobC" class="primary-btn">Join Enterprise Waitlist</a>
     <div style="margin-top: 4rem; color: var(--text-secondary); font-size: 0.9rem;">
       <p>© 2026 Golightstep. Built for the era of AI agents.</p>
@@ -159,4 +181,5 @@
 
   <script type="module" src="/main.js"></script>
 </body>
+
 </html>

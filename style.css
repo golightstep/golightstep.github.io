@@ -296,6 +296,60 @@ h2 {
     color: #3b82f6;
 }
 
+/* Demo Thumbnails */
+.demo-link {
+    text-decoration: none;
+    display: block;
+}
+
+.thumbnail-wrapper {
+    position: relative;
+    aspect-ratio: 16/9;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+    transition: transform 0.3s ease;
+}
+
+.demo-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: filter 0.3s ease;
+}
+
+.play-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--accent-color);
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 0 20px var(--accent-glow);
+}
+
+.thumbnail-wrapper:hover {
+    transform: scale(1.02);
+}
+
+.thumbnail-wrapper:hover .demo-thumbnail {
+    filter: brightness(0.7);
+}
+
+.thumbnail-wrapper:hover .play-overlay {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
 /* Responsiveness */
 @media (max-width: 768px) {
     .hero h1 {
