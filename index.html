@@ -67,36 +67,33 @@
 
   <section id="docs">
     <h2>Registry & Installation</h2>
-    <div class="tabs" id="install-tabs">
-      <div class="tab-nav">
-        <button class="tab-btn active" data-target="python">Python</button>
-        <button class="tab-btn" data-target="node">Node.js</button>
-        <button class="tab-btn" data-target="go">Go</button>
+    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+      <div class="card" style="text-align: left;">
+        <h3>Python</h3>
+        <div class="code-block" style="margin: 1rem 0;">
+          <code>pip install superbrain-sdk</code>
+        </div>
+        <p style="color: var(--text-secondary);">Registry: <a href="https://pypi.org/project/superbrain-sdk/"
+            style="color: var(--accent-color);">superbrain-sdk</a></p>
       </div>
-      <div class="tab-content">
-        <div id="python" class="tab-pane">
-          <div class="code-block">
-            <code>pip install superbrain-sdk</code>
-          </div>
-          <p style="margin-top: 1rem; color: var(--text-secondary);">Registry: <a
-              href="https://pypi.org/project/superbrain-sdk/" style="color: var(--accent-color);">superbrain-sdk</a></p>
+
+      <div class="card" style="text-align: left;">
+        <h3>Node.js</h3>
+        <div class="code-block" style="margin: 1rem 0;">
+          <code>npm install superbrain-distributed-sdk</code>
         </div>
-        <div id="node" class="tab-pane" style="display: none;">
-          <div class="code-block">
-            <code>npm install superbrain-distributed-sdk</code>
-          </div>
-          <p style="margin-top: 1rem; color: var(--text-secondary);">Registry: <a
-              href="https://www.npmjs.com/package/superbrain-distributed-sdk"
-              style="color: var(--accent-color);">superbrain-distributed-sdk</a></p>
+        <p style="color: var(--text-secondary);">Registry: <a
+            href="https://www.npmjs.com/package/superbrain-distributed-sdk"
+            style="color: var(--accent-color);">superbrain-distributed-sdk</a></p>
+      </div>
+
+      <div class="card" style="text-align: left;">
+        <h3>Go</h3>
+        <div class="code-block" style="margin: 1rem 0;">
+          <code>go get github.com/golightstep/superbrainSdk</code>
         </div>
-        <div id="go" class="tab-pane" style="display: none;">
-          <div class="code-block">
-            <code>go get github.com/golightstep/superbrainSdk</code>
-          </div>
-          <p style="margin-top: 1rem; color: var(--text-secondary);">Repository: <a
-              href="https://github.com/golightstep/superbrainSdk" style="color: var(--accent-color);">superbrainSdk</a>
-          </p>
-        </div>
+        <p style="color: var(--text-secondary);">Repository: <a href="https://github.com/golightstep/superbrainSdk"
+            style="color: var(--accent-color);">superbrainSdk</a></p>
       </div>
     </div>
   </section>
@@ -152,17 +149,17 @@
         </tr>
         <tr>
           <td>v0.7.0</td>
-          <td>Tiered Architecture (L1 SHM)</td>
-          <td><span class="status-tag status-current">Current</span></td>
-        </tr>
-        <tr>
-          <td>v0.8.0</td>
           <td>Raft Consensus Replication</td>
           <td><span class="status-tag status-done">Shipped</span></td>
         </tr>
         <tr>
-          <td>v0.9.0</td>
+          <td>v0.7.5</td>
           <td>NVMe Spilling</td>
+          <td><span class="status-tag status-done">Shipped</span></td>
+        </tr>
+        <tr>
+          <td>v0.7.7</td>
+          <td>Tiered Architecture (L1 SHM)</td>
           <td><span class="status-tag status-done">Shipped</span></td>
         </tr>
       </tbody>
@@ -194,7 +191,7 @@
     </div>
   </footer>
 
-  <script type="module" src="/main.js"></script>
+  <script type="module" src="./main.js"></script>
 </body>
 
 </html>

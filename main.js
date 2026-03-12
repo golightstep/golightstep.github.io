@@ -17,32 +17,6 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
 document.addEventListener('DOMContentLoaded', () => {
-  const tabButtons = document.querySelectorAll('.tab-btn');
-  const tabPanes = document.querySelectorAll('.tab-pane');
-
-  tabButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const target = btn.dataset.target;
-
-      // Update active button
-      tabButtons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      // Update active pane
-      tabPanes.forEach(pane => {
-        if (pane.id === target) {
-          pane.style.display = 'block';
-        } else {
-          pane.style.display = 'none';
-        }
-      });
-
-      // Log tab click event
-      logEvent(analytics, 'install_tab_click', {
-        tab_name: target
-      });
-    });
-  });
 
   // Track Waitlist Clicks
   const waitlistBtns = document.querySelectorAll('a[href="https://binary.so/bC7zobC"]');
