@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Superbrain | Distributed Memory Fabric for AI Agents</title>
+  <meta name="description" content="SuperBrain SDK: The high-performance distributed memory fabric for AI agents. Scale your agentic memory across nodes seamlessly.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Fira+Code&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="bg-overlay"></div>
+  <div class="bg-gradient"></div>
+
+  <nav>
+    <div class="logo">SUPERBRAIN</div>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#docs">Docs</a></li>
+      <li><a href="#roadmap">Roadmap</a></li>
+      <li><a href="#demos">Demos</a></li>
+    </ul>
+    <a href="https://binary.so/bC7zobC" class="waitlist-btn">Join Waitlist</a>
+  </nav>
+
+  <section class="hero">
+    <h1>The Distributed Memory<span> Fabric for AI Agents</span></h1>
+    <p>High-performance RAM sharing system written in Go. A distributed memory pool that scales with your AI needs — allocate, read, and write across nodes transparently.</p>
+    <div class="hero-cta">
+      <a href="#docs" class="primary-btn">Get Started</a>
+      <a href="https://github.com/golightstep/superbrainSdk" class="secondary-btn">View on GitHub</a>
+    </div>
+  </section>
+
+  <section id="features">
+    <h2>Powerful Core Engine</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Distributed RAM</h3>
+        <p>A distributed RAM sharing system written in Go with gRPC + Protocol Buffers. Multiple devices donate local RAM to a shared cluster.</p>
+      </div>
+      <div class="card">
+        <h3>Client Transparency</h3>
+        <p>Allocate, read, and write across nodes transparently — as if it were local memory. No infrastructure headaches.</p>
+      </div>
+      <div class="card">
+        <h3>Semantic Memory</h3>
+        <p>FAISS-backed distributed vectors for advanced AI context retrieval and long-term memory persistence.</p>
+      </div>
+      <div class="card">
+        <h3>High Availability</h3>
+        <p>Raft consensus replication and gossip-based membership ensure your memory pool is always online and resilient.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="docs">
+    <h2>Registry & Installation</h2>
+    <div class="tabs" id="install-tabs">
+      <div class="tab-nav">
+        <button class="tab-btn active" data-target="python">Python</button>
+        <button class="tab-btn" data-target="node">Node.js</button>
+        <button class="tab-btn" data-target="go">Go</button>
+      </div>
+      <div class="tab-content">
+        <div id="python" class="tab-pane">
+          <div class="code-block">
+            <code>pip install superbrain-sdk</code>
+          </div>
+          <p style="margin-top: 1rem; color: var(--text-secondary);">Registry: <a href="https://pypi.org/project/superbrain-sdk/" style="color: var(--accent-color);">superbrain-sdk</a></p>
+        </div>
+        <div id="node" class="tab-pane" style="display: none;">
+          <div class="code-block">
+            <code>npm install superbrain-distributed-sdk</code>
+          </div>
+          <p style="margin-top: 1rem; color: var(--text-secondary);">Registry: <a href="https://www.npmjs.com/package/superbrain-distributed-sdk" style="color: var(--accent-color);">superbrain-distributed-sdk</a></p>
+        </div>
+        <div id="go" class="tab-pane" style="display: none;">
+          <div class="code-block">
+            <code>go get github.com/golightstep/superbrainSdk</code>
+          </div>
+          <p style="margin-top: 1rem; color: var(--text-secondary);">Repository: <a href="https://github.com/golightstep/superbrainSdk" style="color: var(--accent-color);">superbrainSdk</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="demos">
+    <h2>See it in Action</h2>
+    <div class="grid">
+      <div class="card">
+        <div style="aspect-ratio: 16/9; background: #111; border-radius: 10px; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center;">
+          <a href="https://www.youtube.com/watch?v=hTIsqH3CTfg" style="color: var(--accent-color); text-decoration: none; font-weight: 600;">Watch Crew AI Demo</a>
+        </div>
+        <h3>Superbrain + Crew AI</h3>
+        <p>Agents sharing memory through the distributed fabric for better collaboration.</p>
+      </div>
+      <div class="card">
+        <div style="aspect-ratio: 16/9; background: #111; border-radius: 10px; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center;">
+          <a href="https://www.youtube.com/watch?v=TzNxpk5PSXM" style="color: var(--accent-color); text-decoration: none; font-weight: 600;">Watch Redis Demo</a>
+        </div>
+        <h3>Superbrain + Redis</h3>
+        <p>High-speed memory symbiosis for low-latency state management.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="roadmap">
+    <h2>Roadmap</h2>
+    <table class="roadmap-table">
+      <thead>
+        <tr>
+          <th>Version</th>
+          <th>Milestone</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>v0.1.0</td>
+          <td>Core Distributed RAM</td>
+          <td><span class="status-tag status-done">Shipped</span></td>
+        </tr>
+        <tr>
+          <td>v0.3.1</td>
+          <td>Semantic Memory (FAISS)</td>
+          <td><span class="status-tag status-done">Shipped</span></td>
+        </tr>
+        <tr>
+          <td>v0.7.0</td>
+          <td>Tiered Architecture (L1 SHM)</td>
+          <td><span class="status-tag status-current">Current</span></td>
+        </tr>
+        <tr>
+          <td>v0.8.0</td>
+          <td>Raft Consensus Replication</td>
+          <td><span class="status-tag status-done">Shipped</span></td>
+        </tr>
+        <tr>
+          <td>v0.9.0</td>
+          <td>NVMe Spilling</td>
+          <td><span class="status-tag status-done">Shipped</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <footer style="padding: 100px 5%; text-align: center; background: var(--glass-bg); border-top: 1px solid var(--glass-border);">
+    <h2 style="margin-bottom: 1rem;">Ready for Superhuman Scale?</h2>
+    <p style="color: var(--text-secondary); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">🔥 Join the Enterprise Waitlist for managed fleets, GPUDirect RDMA access, and dedicated support.</p>
+    <a href="https://binary.so/bC7zobC" class="primary-btn">Join Enterprise Waitlist</a>
+    <div style="margin-top: 4rem; color: var(--text-secondary); font-size: 0.9rem;">
+      <p>© 2026 Golightstep. Built for the era of AI agents.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="/main.js"></script>
+</body>
+</html>
