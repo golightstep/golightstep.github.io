@@ -1,5 +1,5 @@
-import { initializeApp } from "firebase/app";
-import { getAnalytics, logEvent } from "firebase/analytics";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics.js";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -8,7 +8,8 @@ const firebaseConfig = {
   projectId: "superbrainwebsite-4161f",
   storageBucket: "superbrainwebsite-4161f.firebasestorage.app",
   messagingSenderId: "1048392558114",
-  appId: "1:1048392558114:web:f987d3658b85cac5c3cc7b"
+  appId: "1:1048392558114:web:f987d3658b85cac5c3cc7b",
+  measurementId: "G-ESCGBPDTDM"
 };
 
 // Initialize Firebase
