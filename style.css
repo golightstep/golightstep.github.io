@@ -251,6 +251,8 @@ h2 {
     font-family: 'Fira Code', monospace;
     position: relative;
     border: 1px solid var(--glass-border);
+    overflow-x: auto;
+    white-space: nowrap;
 }
 
 .code-block code {
