@@ -3,13 +3,13 @@ import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/10.9.
 
 // Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBsQCGIS4Uc0IKHSuzvtwcEwdA9Ci56A8U",
-  authDomain: "superbrainwebsite-4161f.firebaseapp.com",
-  projectId: "superbrainwebsite-4161f",
-  storageBucket: "superbrainwebsite-4161f.firebasestorage.app",
-  messagingSenderId: "1048392558114",
-  appId: "1:1048392558114:web:f987d3658b85cac5c3cc7b",
-  measurementId: "G-ESCGBPDTDM"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
 // Initialize Firebase
