@@ -13,8 +13,18 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+let analytics;
+try {
+  if (firebaseConfig.apiKey && firebaseConfig.apiKey !== 'undefined') {
+    const app = initializeApp(firebaseConfig);
+    analytics = getAnalytics(app);
+    console.log("Firebase Analytics initialized");
+  } else {
+    console.warn("Firebase API Key missing. Analytics disabled.");
+  }
+} catch (error) {
+  console.error("Firebase initialization failed:", error);
+}
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -32,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.style.color = 'var(--accent-color)';
       btn.style.borderBottomColor = 'var(--accent-color)';
       refPanes.forEach(p => p.style.display = p.id === `ref-${target}` ? 'block' : 'none');
-      logEvent(analytics, 'sdk_tab_click', { language: target });
+      if (analytics) logEvent(analytics, 'sdk_tab_click', { language: target });
     });
   });
 
@@ -47,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const waitlistBtns = document.querySelectorAll('a[href="https://binary.so/bC7zobC"]');
   waitlistBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      logEvent(analytics, 'waitlist_click', {
+      if (analytics) logEvent(analytics, 'waitlist_click', {
         location: btn.classList.contains('primary-btn') ? 'footer' : 'navbar'
       });
     });
@@ -57,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const githubBtns = document.querySelectorAll('a[href="https://github.com/golightstep/superbrainSdk"]');
   githubBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      logEvent(analytics, 'github_sdk_click');
+      if (analytics) logEvent(analytics, 'github_sdk_click');
     });
   });
 
@@ -65,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const demoRepoBtns = document.querySelectorAll('a[href="https://github.com/golightstep/superbrainSdk/blob/main/python/examples/crewai_shared_memory/README.md"]');
   demoRepoBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      logEvent(analytics, 'crewai_demo_repo_click');
+      if (analytics) logEvent(analytics, 'crewai_demo_repo_click');
     });
   });
 

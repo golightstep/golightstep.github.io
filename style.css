@@ -252,11 +252,12 @@ h2 {
     position: relative;
     border: 1px solid var(--glass-border);
     overflow-x: auto;
-    white-space: pre;
 }
 
 .code-block code {
     color: #3b82f6;
+    white-space: pre;
+    display: block;
 }
 
 /* Roadmap Table */
